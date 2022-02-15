@@ -9,10 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var so = sortedestProgram()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        so.addElement(item: 2)
+        var newNumber = sortedestProgram<Int>()
+        newNumber.addElement(element: 3)
+        newNumber.addElement(element: 2)
+        print(newNumber)
+        
     }
 
 

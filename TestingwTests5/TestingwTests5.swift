@@ -22,7 +22,7 @@ class TestingwTests5: XCTestCase {
 
     func testAddedElement(){
         
-        _ = vm?.addElement(item: 1)
+          vm?.addElement(item: 1)
         XCTAssertTrue(vm?.newNumbers.count == 1)
         
     }

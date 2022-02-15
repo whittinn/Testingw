@@ -8,35 +8,52 @@
 import Foundation
 
 
-struct sortedestProgram{
+struct sortedestProgram<T:Comparable>  {
     
-    var newNumbers = Set<Int>().sorted()
+    var newNumbers : [T] = []
+    
+   
     
     
-    mutating func addElement(item:Int?){
         
-        guard let item = item else {
+    
+   
+    
+    mutating func addElement(element:T?){
+        
+        
+        guard let element = element else {
+            return
+        }
+    
+        if newNumbers.contains(element){
             return
         }
         
-        newNumbers.append(item)
+        for i in 0..<newNumbers.count{
+            
+            if element < newNumbers[i]{
+                
+                newNumbers.insert(element, at: i)
+                return
+            }
+            
+        }
         
-        print(newNumbers)
+        newNumbers.append(element)
+      
     }
     
-    mutating func addALLElements(input:[Int]){
-        for number in input{
-            if !newNumbers.contains(number){
-                newNumbers.append(number)
-                
-            }
+    mutating func addALLElements(element:[T]){
+        for number in element{
+           addElement(element: number)
         }
     }
     
-    mutating func deleteElement(index:Int?)-> Int?{
+    mutating func deleteElement(index:Int)-> T?{
         
-        guard let index = index else {
-            return 0
+        if index > newNumbers.count {
+            return nil
         }
         
         return newNumbers.remove(at: index)
@@ -47,17 +64,17 @@ struct sortedestProgram{
         newNumbers.removeAll()
     }
     
-    mutating func findMaxElement()->Int?{
+    mutating func findMaxElement()->T?{
         return newNumbers.max()
     }
     
-    mutating func findSmallElement()->Int?{
+    mutating func findSmallElement()->T?{
         return newNumbers.min()
     }
-    mutating func IfExist(element:Int?)->Bool?{
+    mutating func IfExist(element:T?)->Bool{
         
         guard let element = element else {
-            return true
+            return false
         }
         
         if newNumbers.contains(element){
@@ -68,3 +85,5 @@ struct sortedestProgram{
         
     }
 }
+
+
